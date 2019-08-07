@@ -26,6 +26,7 @@ namespace ioay.Quartz.Console
 
             IJobDetail job = JobBuilder.Create<ScheduledTasks>().WithIdentity("Job", null).Build();
 
+            // WithIntervalInSeconds or WithIntervalInMinutes or WithIntervalInHours set your scheduled range.
             ISimpleTrigger jobTrigger = (ISimpleTrigger)TriggerBuilder.Create().
                 WithIdentity("Job").StartAt(DateTime.UtcNow).
                 WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever()).Build();
